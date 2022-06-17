@@ -1,0 +1,121 @@
+#PROGRAM1
+def leastFactorial(n):
+     product = 1
+     i=1
+     while product<n:
+     #for product in range(1,n,i+1):
+         i=i+1
+         product*=i
+     print(product)
+     return product
+
+def testLeastFactorial():
+    print('-' * 20)
+    print('Part 1: Least Factorial')
+
+    assert leastFactorial(17) == 24
+    assert leastFactorial(5) == 6
+    assert leastFactorial(2) == 2
+    assert leastFactorial(102) == 120
+    # TODO: add your own test cases here
+
+    print('PASSED PROBLEM 1!')
+testLeastFactorial()
+
+#PROGRAM2
+def getTotalNumberOfLipsticks(numberOfLipsticks, numberOfLeftoversNeeded):
+    if numberOfLeftoversNeeded>numberOfLipsticks:
+         TotalNumberOfLipsticks=numberOfLipsticks
+         quit()
+    TotalNumberOfLipsticks=numberOfLipsticks
+    numberOfNewLipsticks=numberOfLipsticks//numberOfLeftoversNeeded
+    numberOfNewLeftoversNeeded=numberOfLipsticks%numberOfLeftoversNeeded
+    if numberOfNewLeftoversNeeded==0:
+        TotalNumberOfLipsticks+=numberOfNewLipsticks
+   
+    while numberOfNewLeftoversNeeded>0:
+    	numberOfNewLipsticks=numberOfLipsticks//numberOfLeftoversNeeded
+    	numberOfNewLeftoversNeeded=numberOfLipsticks%numberOfLeftoversNeeded
+    	TotalNumberOfLipsticks+=numberOfNewLipsticks
+    	numberOfLipsticks= numberOfNewLipsticks+ numberOfNewLeftoversNeeded
+    return TotalNumberOfLipsticks
+
+def testLipsticks():
+    print('\n'+ '-' * 20)
+    print('Part 2: Lipsticks')
+    #print(getTotalNumberOfLipsticks(5, 2))
+    assert getTotalNumberOfLipsticks(5, 2) == 9
+    assert getTotalNumberOfLipsticks(15, 5) == 18
+    assert getTotalNumberOfLipsticks(2, 3) == 2
+    # TODO: add your own test cases here
+    assert getTotalNumberOfLipsticks(20, 10) ==22
+    print('PASSED PROBLEM 2!')
+
+testLipsticks()
+
+
+#PROGRAM3
+
+def getLastStudent(numberOfStudents, treats, startingChair):
+    i=1
+    isC=startingChair
+    lastStudent=0
+    while i<=treats:
+        if(numberOfStudents<treats):
+          if(startingChair == numberOfStudents):
+            startingChair=1
+            lastStudent=startingChair+1
+            startingChair=startingChair+1 
+          if(startingChair < numberOfStudents):
+            lastStudent=startingChair+1
+            startingChair=startingChair+1
+          
+        if(numberOfStudents>=treats):
+            startingChair=isC
+            lastStudent=startingChair+1
+            startingChair=startingChair+1  
+        i=i+1
+    return lastStudent
+
+def testLastStudent():
+        print('\n'+ '-' * 20)
+        print('Part 3: Students and Treats')
+        assert getLastStudent(5,2,1) == 2
+        assert getLastStudent(5,2,2) == 3
+        assert getLastStudent(7,19,2) == 6
+        assert getLastStudent(3,7,3) == 3
+        assert getLastStudent(2,7,2) == 2
+        # TODO add your own test cases here
+        assert getLastStudent(5,2,2) == 3
+        print('PASSED PROBLEM 3!')
+testLastStudent()
+
+#PROGRAM4
+
+def getPairsOfShoes(listOfShoes):
+    # TODO: Solve problem 4 here
+    duplicate=[]
+    count=0
+    for shoes in range(len(listOfShoes)):
+        if(listOfShoes[shoes] not in duplicate):
+            shoeCount=listOfShoes.count(listOfShoes[shoes])
+            if shoeCount>=2:
+                count+=shoeCount//2
+            duplicate.append(listOfShoes[shoes])
+    return count
+
+
+def testPairsOfShoes():
+    print('\n'+ '-' * 20)
+    print('Part 4: Pairs of Shoes')
+    #print( getPairsOfShoes(["red", "blue", "red", "green", "green", "red"]))
+    assert getPairsOfShoes(["red", "blue", "red", "green", "green", "red"]) ==2
+    assert getPairsOfShoes(["green", "blue", "blue", "blue", "blue", "blue", "green"]) == 3
+    #print(getPairsOfShoes(["green", "blue", "blue", "blue", "blue", "blue", "green"]))
+    #TODO: Add your own test cases here
+
+    print('PASSED PROBLEM 4!')
+    print('\n\nCongratulations!!')
+testPairsOfShoes()
+          
+       
